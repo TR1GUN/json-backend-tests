@@ -18,15 +18,15 @@ class Authorization:
 
 import requests
 
-testing_url = 'http://192.168.0.1/'
-
-auth = 'http://192.168.0.1/auth'
+# testing_url = 'http://192.168.0.1/'
+testing_url = 'http://192.168.202.143/'
+user_agent_val = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
 
 json_text = {"login": "admin", "password": "admin"}
 
 # json_text = '{"password": "admin", "login": "admin"}'
 
-user_agent_val = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
+
 # login = 'http://192.168.0.1/login'
 #
 # json_text = {'password': 'admin', 'login': 'admin'}
@@ -49,21 +49,19 @@ login = "login"
 
 url_login = ip + login
 
-# response = requests.get(url_login)
-# print(response.cookies.get(name='sessionid'))
-# print(response.headers)
-#
 
-# json_text = '{"password":"admin","login":"admin"}'
-json_ = {"password": "admin", "login": "admin"}
-testing_url = 'http://192.168.0.1/'
+# ----->
+testing_url = 'http://192.168.202.143/'
 print('---->', testing_url + 'auth')
-import json
 
-json_text = {"password": "admin", "login": "admin"}
-json_text = json.dumps(json_text)
 # теперь убираем все пробелы
 
+import json
+# ----->
+json_text = {"password": "admin", "login": "admin"}
+json_text = json.dumps(json_text)
+
+json_text = json_text.replace(" ", '')
 
 response = requests.post(testing_url + 'auth', data=json_text, headers=headers)
 print(response)

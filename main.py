@@ -1,11 +1,24 @@
 
 # iec60870
 
-# TODO this is HTTP stuff
-def auth(env):
-    return '200 OK', ""
+
+# def auth(env):
+#     return '200 OK', ""
+
+Machine_IP = '192.168.202.143'
+Login = 'admin'
+Password = 'admin'
 
 
+import JSON_Backend_framework
+from JSON_Backend_framework import USPD
+
+
+USPD = USPD().UM_40_Smart(ip_address=Machine_IP)
+
+lol = USPD.Settings.DeviceSettings.Time_Local.read_settings()
+
+print(lol)
 # # ///
 # #     По УРЛ определяем наш запрос - Это важно
 #
@@ -149,87 +162,87 @@ def auth(env):
 #             }
 
 # --
-
-
-handlers = [
-        '/auth',
-        # // Авторизация - Не дописано !!!!! +
-        '/settings/proto/json/auth' ,
-
-        # // Переписал - Таблица Счетчиков - переделал +
-        '/settings/meter/table',
-
-        # // переписал - Настройки СИМ Карты - переделал +
-        '/settings/modem/sim',
-
-        # // Настройки линий питания - Переделал +
-        '/settings/dout',
-
-        # // Состояние линий питания - Добивил !!!! +
-        '/state/dout',
-
-        # // переписал Настройки ethernet +
-        '/settings/ip',
-        # // Настройки локального времени - Переписал +
-        '/settings/time/local',
-
-        # // Сервера синхронизации времени - Переписал
-        '/settings/servers/sntp',
-        # /////////////////////ДОБАВИЛ///////////////////////////
-
-        # // Условия синхронизации времени - - Не дописмал
-        '/settings/actions/sntp',
-
-        # // Журнал установки времени - - Не дописмал
-        '/jrnl/time',
-
-        # ///////////////////////////////////////////////////////
-        # // Настройки расписаний - Переделал +
-        '/settings/events/schdl',
-
-        # // Опрос приборов учета по событиям - Переделал +
-        '/settings/actions/meter',
-
-        # // - Настройки - Настройка системы событий - Переписал +
-        '/settings/events/manager' ,
-
-        # // - Настройки HTTP сервера - переписал +
-        '/settings/servers/tcp',
-
-        # // Задание времени - Переделал
-        '/meter/settings/time',
-
-        # // Задание положения реле - Переписал
-        '/meter/settings/relay',
-
-        # // Считывание - Архивные показатели - Переписал
-        '/meter/data/arch',
-        '/meter/data/moment',
-        '/settings/templates/meter',
-        '/settings/templates/arch',
-        '/jrnl/meter/answ',
-        '/state/time',
-        '/action/time/set',
-        # '/action/restart' ,
-        '/settings/servers/mqtt',
-        '/settings/charge/table',
-        '/charge/data/arch',
-        '/settings/uart',
-        '/settings/templates/messages',
-        '/settings/action/mqtt',
-        '/settings/events/calendar',
-        '/settings/smtp',
-        '/settings/action/smtp',
-        '/settings/email',
-        '/settings/iec60870/mapioa',
-        '/settings/iec60870/value_description',
-        '/settings/iec60870/template_name',
-        '/settings/iec60870/cot_types',
-        '/settings/iec60870/type_id_types',
-        '/settings/iec60870/iec60870_settings',
-        '/settings/iec60870/iec60870_template',
-        '/settings/iec60870/iec60870_cot_values',
-            ]
+#
+#
+# handlers = [
+#         '/auth',
+#         # // Авторизация - Не дописано !!!!! +
+#         '/settings/proto/json/auth' ,
+#
+#         # // Переписал - Таблица Счетчиков - переделал +
+#         '/settings/meter/table',
+#
+#         # // переписал - Настройки СИМ Карты - переделал +
+#         '/settings/modem/sim',
+#
+#         # // Настройки линий питания - Переделал +
+#         '/settings/dout',
+#
+#         # // Состояние линий питания - Добивил !!!! +
+#         '/state/dout',
+#
+#         # // переписал Настройки ethernet +
+#         '/settings/ip',
+#         # // Настройки локального времени - Переписал +
+#         '/settings/time/local',
+#
+#         # // Сервера синхронизации времени - Переписал
+#         '/settings/servers/sntp',
+#         # /////////////////////ДОБАВИЛ///////////////////////////
+#
+#         # // Условия синхронизации времени - - Не дописмал
+#         '/settings/actions/sntp',
+#
+#         # // Журнал установки времени - - Не дописмал
+#         '/jrnl/time',
+#
+#         # ///////////////////////////////////////////////////////
+#         # // Настройки расписаний - Переделал +
+#         '/settings/events/schdl',
+#
+#         # // Опрос приборов учета по событиям - Переделал +
+#         '/settings/actions/meter',
+#
+#         # // - Настройки - Настройка системы событий - Переписал +
+#         '/settings/events/manager' ,
+#
+#         # // - Настройки HTTP сервера - переписал +
+#         '/settings/servers/tcp',
+#
+#         # // Задание времени - Переделал
+#         '/meter/settings/time',
+#
+#         # // Задание положения реле - Переписал
+#         '/meter/settings/relay',
+#
+#         # // Считывание - Архивные показатели - Переписал
+#         '/meter/data/arch',
+#         '/meter/data/moment',
+#         '/settings/templates/meter',
+#         '/settings/templates/arch',
+#         '/jrnl/meter/answ',
+#         '/state/time',
+#         '/action/time/set',
+#         # '/action/restart' ,
+#         '/settings/servers/mqtt',
+#         '/settings/charge/table',
+#         '/charge/data/arch',
+#         '/settings/uart',
+#         '/settings/templates/messages',
+#         '/settings/action/mqtt',
+#         '/settings/events/calendar',
+#         '/settings/smtp',
+#         '/settings/action/smtp',
+#         '/settings/email',
+#         '/settings/iec60870/mapioa',
+#         '/settings/iec60870/value_description',
+#         '/settings/iec60870/template_name',
+#         '/settings/iec60870/cot_types',
+#         '/settings/iec60870/type_id_types',
+#         '/settings/iec60870/iec60870_settings',
+#         '/settings/iec60870/iec60870_template',
+#         '/settings/iec60870/iec60870_cot_values',
+#             ]
 # --
 
 from Service.Request_GET import GET
@@ -252,10 +265,10 @@ from Service.Request_GET import GET
  # /settings/servers/sntp -  Не существует /etc/chrony/uspd.conf
 # /settings/actions/sntp - Надо дописать
 
-url = "/settings/ip"
-result = GET(url=url).Result()
-print(result)
-
+# url = "/settings/ip"
+# result = GET(url=url).Result()
+# print(result)
+#
 
 # from genson import SchemaBuilder
 # import json

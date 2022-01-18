@@ -1,0 +1,3 @@
+pip install git+https://osr-dev-git.allmonitoring.local/AutoTestHelpers/um40smart_autotests/json_backend_framework.git@master#egg=USPD-JSON_Backend_Framework
+
+
